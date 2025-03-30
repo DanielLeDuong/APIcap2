@@ -48,11 +48,18 @@ app.post('/login', (req,res) => {
 
 //update
 app.put('/update', async (req,res) => {
-    const {id, ...rest} = req.body
+    const {_id, ...rest} = req.body
 
     console.log(rest)
-    const data = await RegisterModel.updateOne({_id: id}, rest)
+    const data = await RegisterModel.updateOne({_id: _id}, rest)
     res.send({success: true, message:"update successfull", data: data})
+})
+
+//delete
+app.delete('/delete/:id', async (req,res) => {
+    const id = req.params.id
+    const data = await RegisterModel.deleteOne({_id: id})
+    res.send({success: true, message:"delete successfull", data: data})
 })
 
 //Route

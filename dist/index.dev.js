@@ -58,17 +58,17 @@ app.post('/login', function (req, res) {
 }); //update
 
 app.put('/update', function _callee(req, res) {
-  var _req$body2, id, rest, data;
+  var _req$body2, _id, rest, data;
 
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          _req$body2 = req.body, id = _req$body2.id, rest = _objectWithoutProperties(_req$body2, ["id"]);
+          _req$body2 = req.body, _id = _req$body2._id, rest = _objectWithoutProperties(_req$body2, ["_id"]);
           console.log(rest);
           _context.next = 4;
           return regeneratorRuntime.awrap(RegisterModel.updateOne({
-            _id: id
+            _id: _id
           }, rest));
 
         case 4:
@@ -82,6 +82,34 @@ app.put('/update', function _callee(req, res) {
         case 6:
         case "end":
           return _context.stop();
+      }
+    }
+  });
+}); //delete
+
+app["delete"]('/delete/:id', function _callee2(req, res) {
+  var id, data;
+  return regeneratorRuntime.async(function _callee2$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          id = req.params.id;
+          _context2.next = 3;
+          return regeneratorRuntime.awrap(RegisterModel.deleteOne({
+            _id: id
+          }));
+
+        case 3:
+          data = _context2.sent;
+          res.send({
+            success: true,
+            message: "delete successfull",
+            data: data
+          });
+
+        case 5:
+        case "end":
+          return _context2.stop();
       }
     }
   });
