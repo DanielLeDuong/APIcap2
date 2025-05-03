@@ -1,6 +1,6 @@
 "use strict";
 
-var RegisterModel = require('../ApiUser/Register'); //lay user tu postman
+var RegisterModel = require('../API/Register'); //lay user tu postman
 
 
 var userController = {

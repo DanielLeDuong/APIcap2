@@ -12,9 +12,11 @@ var mongoose = require('mongoose');
 
 var cors = require('cors');
 
-var RegisterModel = require('./ApiUser/Register');
+var RegisterModel = require('./API/Register');
 
-var cookieParser = require('cookie-parser'); //post
+var cookieParser = require('cookie-parser');
+
+var UserDetailModal = require('./API/UserDetail'); //post
 
 
 var authRoute = require('./routes/auth');
@@ -119,5 +121,13 @@ app.use('/v1/auth', authRoute);
 app.use('/v1/user', userRoute);
 app.listen(3001, function () {
   console.log("server is running");
+}); //test
+
+app.post('/userdetail', function (req, res) {
+  UserDetailModal.create(req.body).then(function (regis) {
+    return res.json(regis);
+  })["catch"](function (err) {
+    return res.json(err);
+  });
 });
 //# sourceMappingURL=index.dev.js.map

@@ -1,4 +1,4 @@
-const RegisterModel = require('../ApiUser/Register')
+const RegisterModel = require('../API/Register')
 
 //lay user tu postman
 const userController = {

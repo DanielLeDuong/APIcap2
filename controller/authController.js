@@ -1,4 +1,4 @@
-const RegisterModel = require('../ApiUser/Register')
+const RegisterModel = require('../API/Register')
 const jwt = require('jsonwebtoken')
 
 

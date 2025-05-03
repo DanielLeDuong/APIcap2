@@ -4,8 +4,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const RegisterModel = require('./ApiUser/Register')
+const RegisterModel = require('./API/Register')
 const cookieParser = require('cookie-parser')
+const UserDetailModal = require('./API/UserDetail')
 //post
 const authRoute = require('./routes/auth')
 const app = express()
@@ -68,4 +69,13 @@ app.use('/v1/user', userRoute)
 
 app.listen(3001, () => {
     console.log("server is running")
+})
+
+
+//test
+app.post('/userdetail',(req,res) =>{
+    UserDetailModal.create(req.body)
+
+    .then(regis => res.json(regis))
+    .catch(err => res.json(err))
 })
